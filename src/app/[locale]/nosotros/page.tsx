@@ -1,224 +1,154 @@
 "use client";
 
 import { useLocale } from 'next-intl';
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { T } from "@/components/T";
-import { ArrowRight, Compass, Sparkles, MapPin, Feather, Target, Layers, LayoutList } from "lucide-react";
 
 export default function SobreNosotrosPage() {
   const locale = useLocale();
 
+  // FAQ Completamente parafraseado con un tono de alta gama y servicio premium
+  const faqs = [
+    {
+      q: "¿Cuál es la dinámica para apartar mi lugar?",
+      a: "Escoge la vivencia que más resuene contigo y contáctanos. En menos de 24 horas te entregaremos un itinerario a la medida y el acceso seguro para procesar tu reserva de forma inmediata."
+    },
+    {
+      q: "¿Qué contempla exactamente mi inversión?",
+      a: "Garantizamos una experiencia sin fricciones: anfitriones expertos, degustaciones acordadas, accesos a recintos, movilidad interna y contribuciones fiscales. Las tarifas están expresadas en pesos mexicanos (IVA incluido). El alojamiento y vuelos se cotizan aparte, salvo en expediciones extendidas."
+    },
+    {
+      q: "¿Orquestan recorridos para círculos íntimos o corporativos?",
+      a: "Totalmente. Diseñamos itinerarios confidenciales para parejas, familias o equipos de trabajo. Comparte tu visión y estructuraremos una jornada exclusiva, respetando tus fechas y nivel de privacidad."
+    },
+    {
+      q: "¿Qué métodos de pago manejan y cuál es su política de cancelación?",
+      a: "Procesamos pagos vía transferencia, Visa y Mastercard. Podrás recuperar el 100% de tu inversión si cancelas con un mes de anticipación, o el 50% entre 14 y 30 días previos. Por logística de ingredientes y reservas, no hay reembolsos con menos de dos semanas de aviso, salvo emergencias médicas comprobables."
+    },
+    {
+      q: "¿Las travesías están disponibles en idiomas extranjeros?",
+      a: "La esencia de nuestros recorridos se narra en español. No obstante, disponemos de intérpretes y guías bilingües (inglés/español) para invitados internacionales; solo te pedimos indicarlo al solicitar tu expedición."
+    },
+    {
+      q: "¿Cómo abordan las alergias o regímenes alimenticios particulares?",
+      a: "Con absoluta seriedad. Adaptamos nuestras degustaciones para comensales veganos, celíacos o con cualquier requerimiento específico. Avísanos con antelación para que nuestras cocineras tradicionales preparen los insumos adecuados."
+    }
+  ];
+
   return (
     <div className="min-h-screen flex flex-col bg-background selection:bg-primary/20">
       <Header />
-      
+
       <main className="flex-1">
-        
-        {/* 1. HERO & ESENCIA (Basado en la imagen 1 - Ruta Vibes) */}
-        <section className="pt-40 pb-20 lg:pt-48 lg:pb-32 px-6 lg:px-12 max-w-screen-xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="inline-flex items-center gap-3">
-                <span className="h-[1px] w-8 bg-primary"></span>
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/60">
-                  <T>Nuestra Firma</T>
+
+        {/* ==========================================
+            SECCIÓN 1: INTRODUCCIÓN EDITORIAL
+            ========================================== */}
+        <section className="pt-40 pb-20 lg:pt-56 lg:pb-32 px-6 lg:px-12 max-w-screen-2xl mx-auto relative overflow-hidden">
+          <div className="absolute inset-0 bg-texture mix-blend-multiply opacity-20 pointer-events-none" />
+
+          {/* Layout Asimétrico de Revista */}
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-0 items-center relative z-10">
+            
+            {/* Texto Desfasado a la Izquierda */}
+            <div className="w-full lg:w-5/12 lg:pr-12 lg:-mt-24 z-20">
+              <span className="text-xs font-bold text-foreground/50 tracking-[0.4em] uppercase mb-8 block">
+                <T>Nuestra Esencia</T>
+              </span>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold uppercase tracking-tight text-foreground mb-8 leading-[0.85] break-words">
+                <T>La cocina</T><br/>
+                <span className="font-serif italic text-primary font-normal lowercase tracking-normal"><T>que respira.</T></span>
+              </h1>
+              <div className="w-16 h-[2px] bg-secondary mb-8" />
+              <p className="text-xl md:text-2xl font-serif italic text-muted-foreground leading-relaxed">
+                <T>Lejos de los reflectores, el verdadero lujo es probar el fruto de una tierra que ha sido trabajada con respeto.</T>
+              </p>
+            </div>
+
+            {/* Imagen Principal a la Derecha */}
+            <div className="w-full lg:w-7/12 relative">
+              <div className="absolute inset-0 bg-primary/5 translate-x-6 translate-y-6" />
+              <img
+                src="https://images.unsplash.com/photo-1564767655658-4d6af1657802?q=80&w=2000&auto=format&fit=crop"
+                alt="Cocina de origen"
+                className="relative z-10 w-full h-[50vh] lg:h-[75vh] object-cover grayscale-[15%]"
+              />
+              
+              {/* Bloque de texto superpuesto sobre la imagen */}
+              <div className="relative lg:absolute lg:-bottom-12 lg:-left-24 z-30 bg-background border border-foreground/10 p-8 md:p-12 shadow-2xl max-w-xl mt-8 lg:mt-0">
+                <p className="text-foreground/80 font-sans text-sm md:text-base leading-relaxed mb-6">
+                  <T>Fundamos este proyecto con una convicción inquebrantable: la identidad gastronómica de México no reside en los menús prefabricados, sino en las manos de quienes muelen el maíz, cultivan el agave y avivan la leña.</T>
+                </p>
+                <p className="text-foreground/80 font-sans text-sm md:text-base leading-relaxed">
+                  <T>Tejemos redes directas con familias, agricultores y maestros artesanos. Cada expedición está diseñada para inyectar valor directo a sus comunidades, convirtiendo tu viaje en una forma honesta y profunda de honrar nuestras raíces.</T>
+                </p>
+                <span className="block mt-8 text-xs font-bold text-primary uppercase tracking-widest">
+                  <T>El Equipo Explorago</T>
                 </span>
               </div>
-              <h1 className="text-5xl md:text-7xl font-black text-foreground tracking-tighter leading-[0.9]">
-                <T>Diseñamos viajes</T><br/>
-                <span className="font-light italic text-primary"><T>con intención.</T></span>
-              </h1>
-              <p className="text-lg text-muted-foreground font-medium leading-relaxed max-w-md">
-                <T>Cada expedición nace de una visión pura: celebrar, asombrar, desconectar o conquistar un destino con absoluta exclusividad. Orquestamos rutas donde la inmersión, la alta gastronomía y la logística se fusionan a la medida.</T>
-              </p>
-              
-              <div className="grid sm:grid-cols-2 gap-8 pt-8 border-t border-foreground/10">
-                <div>
-                  <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-2"><T>El Enfoque</T></p>
-                  <p className="text-sm font-black text-foreground"><T>Destino, narrativa y ejecución impecable en una misma pieza.</T></p>
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-2"><T>El Objetivo</T></p>
-                  <p className="text-sm font-black text-foreground"><T>Que cada travesía respire al ritmo exacto de quien la protagoniza.</T></p>
-                </div>
-              </div>
             </div>
 
-            {/* Imagen Asimétrica */}
-            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl group">
-              <img 
-                src="https://images.pexels.com/photos/3280130/pexels-photo-3280130.jpeg" 
-                alt="Filosofía HorizonTrip" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8">
-                <div className="glass-panel p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
-                  <p className="text-white font-black text-xl mb-1">HorizonTrip</p>
-                  <p className="text-white/80 text-xs font-medium uppercase tracking-widest"><T>Reimaginando la exploración en México.</T></p>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* 2. ENFOQUE Y BASES (Basado en la imagen 2 - Tres bases de la experiencia) */}
-        <section className="py-24 bg-foreground text-background relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-          
+        {/* ==========================================
+            SECCIÓN 2: FAQ (Estilo Menú / Guía del Viajero)
+            ========================================== */}
+        <section className="py-24 lg:py-40 bg-foreground text-background relative border-t border-white/5 mt-12 lg:mt-24">
+          <div className="absolute inset-0 bg-texture mix-blend-overlay opacity-30 pointer-events-none" />
+
           <div className="container mx-auto px-6 lg:px-12 max-w-screen-xl relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-20">
-              <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tighter"><T>Tres pilares de la experiencia</T></h2>
-              <p className="text-background/60 font-medium text-lg"><T>Así materializamos el estándar HorizonTrip en expediciones nítidas, fluidas y absolutamente personalizables.</T></p>
-            </div>
 
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
-              {[
-                {
-                  icon: Target,
-                  title: "Diseño con Intención",
-                  desc: "No hay rutas al azar. Cada itinerario se esculpe para celebrar, asombrar o desconectar en sintonía con tu visión específica."
-                },
-                {
-                  icon: MapPin,
-                  title: "El Destino como Lienzo",
-                  desc: "Rechazamos los genéricos. Sincronizamos tu viaje con la selva, la costa o la herencia cultural para que el entorno cobre vida."
-                },
-                {
-                  icon: Layers,
-                  title: "Logística Invisible",
-                  desc: "Fechas, traslados, accesos y hospitalidad se orquestan milimétricamente desde el primer día para garantizar cero contratiempos."
-                }
-              ].map((pillar, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 p-10 rounded-[2rem] hover:bg-white/10 transition-colors group">
-                  <div className="w-14 h-14 bg-primary rounded-2xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform">
-                    <pillar.icon className="w-6 h-6 text-foreground" />
-                  </div>
-                  <h3 className="text-2xl font-black text-white mb-4 tracking-tight"><T>{pillar.title}</T></h3>
-                  <p className="text-white/60 leading-relaxed font-medium"><T>{pillar.desc}</T></p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 3. EXPERIENCIAS COMPLETAS (Basado en la imagen 3 - Por qué Ruta Vibes) */}
-        <section className="py-24 lg:py-32 bg-background border-b border-foreground/10">
-          <div className="container mx-auto px-6 lg:px-12 max-w-screen-xl">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
-              
-              <div className="space-y-8">
-                <h2 className="text-4xl md:text-5xl font-black text-foreground tracking-tighter leading-[1.1]">
-                  <T>Orquestamos experiencias</T> <span className="font-light italic text-primary"><T>completas.</T></span>
+            {/* Cabecera FAQ reescrita */}
+            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-24 border-b border-white/10 pb-12">
+              <div className="max-w-2xl">
+                <span className="block text-xs font-bold text-white/40 tracking-[0.4em] uppercase mb-6">
+                  <T>Guía del Viajero</T>
+                </span>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold uppercase tracking-tight text-white leading-none">
+                  <T>Claridad</T><br/>
+                  <span className="text-primary"><T>Absoluta.</T></span>
                 </h2>
-                <p className="text-muted-foreground font-medium text-lg leading-relaxed">
-                  <T>HorizonTrip integra accesos privados, alta cocina, fotografía, sorpresas a medida y traslados blindados. El plan base de nuestro catálogo es solo el preludio, no la frontera.</T>
+              </div>
+              <div className="max-w-sm pb-2">
+                <p className="font-serif italic text-white/60 text-lg md:text-xl">
+                  <T>Respuestas precisas para que inicies tu travesía con total tranquilidad y certeza.</T>
                 </p>
-
-                <div className="space-y-8 pt-8">
-                  {[
-                    { title: "Diseño Emocional", desc: "Calculamos el ritmo, la atmósfera y el impacto de cada paso para forjar recuerdos imborrables, no solo itinerarios logísticos." },
-                    { title: "Concierge Dedicado", desc: "Viajero, destino y anfitriones convergen bajo una misma batuta humana para que la travesía fluida de principio a fin." },
-                    { title: "Curaduría Estética", desc: "Cada santuario, encuadre y detalle se selecciona bajo un criterio riguroso de belleza visual y exclusividad." }
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-6 items-start group">
-                      <div className="w-12 h-12 rounded-full border border-foreground/10 flex items-center justify-center shrink-0 group-hover:border-primary transition-colors">
-                        <span className="font-serif italic text-foreground/40 group-hover:text-primary">0{i+1}</span>
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-black text-foreground mb-2"><T>{item.title}</T></h4>
-                        <p className="text-muted-foreground text-sm font-medium leading-relaxed"><T>{item.desc}</T></p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
-
-              <div className="space-y-6">
-                <div className="aspect-video rounded-[2rem] overflow-hidden shadow-xl mb-8">
-                  <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg" alt="Resort de lujo" className="w-full h-full object-cover" />
-                </div>
-                
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div className="bg-white p-8 rounded-[2rem] border border-foreground/10">
-                    <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-4"><T>Disciplinas Creativas</T></p>
-                    <ul className="space-y-3">
-                      {["Retiros Privados", "Alta Gastronomía", "Hospitalidad VIP", "Escapadas a Medida", "Sorpresas Exclusivas"].map((area, i) => (
-                        <li key={i} className="text-sm font-bold text-foreground/80 flex items-center gap-2">
-                          <div className="w-1 h-1 bg-primary rounded-full" /> <T>{area}</T>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="bg-foreground p-8 rounded-[2rem] shadow-xl text-background">
-                    <p className="text-[10px] font-bold text-primary uppercase tracking-widest mb-4"><T>Cobertura</T></p>
-                    <h4 className="text-2xl font-black mb-3"><T>México</T></h4>
-                    <p className="text-background/70 text-sm font-medium leading-relaxed"><T>Caribe, Bajío, Costas del Pacífico y Pueblos Mágicos seleccionados bajo estricto estándar de calidad.</T></p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-
-        {/* 4. OPERACIÓN / METODOLOGÍA (Basado en la imagen 4 - Operación) */}
-        <section className="py-24 lg:py-32 bg-background">
-          <div className="container mx-auto px-6 lg:px-12 max-w-screen-xl">
-            
-            <div className="text-center max-w-2xl mx-auto mb-20">
-              <div className="mb-4 inline-flex items-center justify-center">
-                <Feather className="w-5 h-5 text-primary mr-3" />
-                <span className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/60"><T>Metodología</T></span>
-              </div>
-              <h2 className="text-4xl md:text-6xl font-black text-foreground tracking-tighter mb-6"><T>De la idea a la reserva</T></h2>
-              <p className="text-muted-foreground font-medium text-lg"><T>Este es el flujo exacto con el que convertimos una visión abstracta en un folio de expedición impecable e inmersivo.</T></p>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-8 relative">
-              {/* Línea conectora de fondo (visible solo en desktop) */}
-              <div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] bg-foreground/10 -translate-y-1/2 z-0" />
+            {/* Lista Editorial de Preguntas (Adiós al Grid) */}
+            <div className="flex flex-col max-w-4xl mx-auto">
+              {faqs.map((faq, i) => (
+                <div key={i} className="flex flex-col md:flex-row gap-6 md:gap-12 py-10 border-b border-white/10 group hover:border-primary transition-colors">
+                  
+                  {/* Número Gigante y Elegante */}
+                  <div className="md:w-1/6 shrink-0">
+                    <span className="text-4xl md:text-5xl font-serif italic text-white/20 group-hover:text-primary transition-colors">
+                      0{i + 1}
+                    </span>
+                  </div>
 
-              {[
-                {
-                  step: "01",
-                  title: "Descubrimiento",
-                  desc: "Mapeamos el motivo del viaje, tu estilo personal y la ciudad deseada para entender qué tipo de atmósfera cobra sentido para ti."
-                },
-                {
-                  step: "02",
-                  title: "Arquitectura de Ruta",
-                  desc: "Seleccionamos el plan base, ajustamos servicios de élite y establecemos un ritmo de recorrido totalmente coherente con el destino."
-                },
-                {
-                  step: "03",
-                  title: "Consolidación",
-                  desc: "La reserva queda sujeta a disponibilidad real, validando con transparencia los tiempos, el alcance logístico y los costos base."
-                }
-              ].map((phase, i) => (
-                <div key={i} className="bg-white border border-foreground/10 rounded-[2rem] p-10 relative z-10 hover:border-primary transition-colors shadow-sm hover:shadow-xl group">
-                  <span className="text-4xl font-serif italic text-foreground/20 group-hover:text-primary transition-colors block mb-6">{phase.step}</span>
-                  <h3 className="text-2xl font-black text-foreground mb-4 tracking-tight"><T>{phase.title}</T></h3>
-                  <p className="text-muted-foreground font-medium leading-relaxed"><T>{phase.desc}</T></p>
+                  {/* Pregunta y Respuesta */}
+                  <div className="md:w-5/6 flex flex-col gap-4">
+                    <h3 className="text-2xl md:text-3xl font-display font-bold uppercase text-white tracking-tight">
+                      <T>{faq.q}</T>
+                    </h3>
+                    <p className="text-white/60 font-sans text-base leading-relaxed group-hover:text-white/80 transition-colors">
+                      <T>{faq.a}</T>
+                    </p>
+                  </div>
+                  
                 </div>
               ))}
-            </div>
-
-            {/* CTA Final */}
-            <div className="mt-24 text-center">
-              <Link href={`/${locale}/cotizar`} className="inline-flex items-center justify-center h-16 px-10 rounded-full bg-foreground text-background font-bold tracking-widest uppercase hover:bg-primary transition-all shadow-xl group text-sm">
-                <T>Iniciar Diseño de Ruta</T>
-                <ArrowRight className="w-5 h-5 ml-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
             </div>
 
           </div>
         </section>
 
       </main>
-      
+
       <Footer />
     </div>
   );

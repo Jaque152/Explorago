@@ -24,10 +24,8 @@ export function Header() {
   const { cart, getItemCount } = useCart();
   const itemCount = getItemCount();
 
-  // 1. Detectar si estamos exactamente en la página de inicio
   const isHome = pathname === `/${locale}` || pathname === `/${locale}/`;
 
-  // 2. Escuchar el evento de scroll para cambiar el diseño al bajar
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -36,8 +34,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 3. Lógica dinámica de estilos
-  // El header solo es transparente si estamos en el Home Y no hemos hecho scroll
   const isTransparent = isHome && !isScrolled;
 
   const headerBg = isTransparent 
@@ -63,14 +59,13 @@ export function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ease-in-out ${headerBg} ${paddingClass}`}>
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 flex items-center justify-between">
         
-        {/* Logo Tipográfico HorizonTrip */}
+        {/* LOGO SEGURO: Usando font-bold y text-2xl/3xl */}
         <Link href={`/${locale}/`} className="relative z-50">
-          <span className={`text-2xl md:text-3xl font-black tracking-tighter transition-colors duration-300 ${logoTextColor}`}>
-            Horizon<span className="font-light italic text-primary drop-shadow-none">Trip.</span>
+          <span className={`text-2xl md:text-3xl font-display font-bold tracking-tight transition-colors duration-300 ${logoTextColor} uppercase`}>
+            EXPLORA<span className="text-primary">GO.</span>
           </span>
         </Link>
 
-        {/* Navegación Desktop */}
         <nav className="hidden lg:flex items-center gap-10">
           {navLinks.map((link, index) => (
             <Link
@@ -84,10 +79,7 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Sección Derecha: Carrito y Menú Móvil */}
         <div className="flex items-center gap-6 relative z-50">
-          
-          {/* Icono del Carrito Boutique */}
           <div
             className="relative"
             onMouseEnter={() => setShowMiniCart(true)}
@@ -102,9 +94,8 @@ export function Header() {
               )}
             </Link>
 
-            {/* Dropdown Mini Carrito */}
             {showMiniCart && (
-              <div className="absolute right-0 top-full mt-6 w-80 bg-background/95 backdrop-blur-xl rounded-2xl overflow-hidden z-50 border border-border shadow-2xl animate-reveal">
+              <div className="absolute right-0 top-full mt-6 w-80 bg-background/95 backdrop-blur-xl rounded-none overflow-hidden z-50 border border-border shadow-2xl animate-reveal">
                 <div className="p-5 border-b border-border/50">
                   <h3 className="font-bold text-sm tracking-widest uppercase text-foreground/80">
                     <T>Tu Dossier</T>
@@ -123,18 +114,18 @@ export function Header() {
                                             ? item.experience.images[0] : '/placeholder.jpg';
                         return (
                           <div key={`${item.activityId}-${item.date}`} className="flex gap-4 items-center group cursor-default">
-                            <img src={miniImage} className="w-16 h-16 rounded-xl object-cover" alt={item.experience.title} />
+                            <img src={miniImage} className="w-16 h-16 object-cover" alt={item.experience.title} />
                             <div className="flex-1 min-w-0">
                               <h4 className="text-sm font-bold text-foreground truncate group-hover:text-primary transition-colors"><T>{item.experience.title}</T></h4>
                               <p className="text-[10px] uppercase tracking-widest font-bold text-muted-foreground mb-1">{item.people}p • <T>{item.experience.plan_type}</T></p>
-                              <p className="text-sm font-black text-foreground">{formatPrice(item.totalPrice)}</p>
+                              <p className="text-sm font-bold text-foreground">{formatPrice(item.totalPrice)}</p>
                             </div>
                           </div>
                         );
                       })}
                     </div>
                     <div className="p-4 bg-background border-t border-border/50">
-                      <Link href={`/${locale}/carrito`} className="block w-full py-4 bg-foreground text-background hover:bg-primary transition-colors text-center rounded-xl text-xs uppercase tracking-widest font-bold shadow-xl">
+                      <Link href={`/${locale}/carrito`} className="block w-full py-4 bg-foreground text-background hover:bg-primary transition-colors text-center text-xs uppercase tracking-widest font-bold shadow-xl">
                         <T>Finalizar Reserva</T>
                       </Link>
                     </div>
@@ -144,7 +135,6 @@ export function Header() {
             )}
           </div>
 
-          {/* Botón de Menú Móvil */}
           <button 
             className={`lg:hidden transition-colors duration-300 ${iconColor}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -154,7 +144,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Overlay del Menú Móvil */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 bg-background z-40 flex flex-col justify-center items-center p-6 animate-fade-in">
           <nav className="flex flex-col items-center gap-8">
@@ -163,7 +152,7 @@ export function Header() {
                 key={index} 
                 href={`/${locale}${link.href}`} 
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-black text-foreground hover:text-primary transition-colors uppercase tracking-widest"
+                className="text-2xl font-bold text-foreground hover:text-primary transition-colors uppercase tracking-widest"
               >
                 {link.label}
               </Link>

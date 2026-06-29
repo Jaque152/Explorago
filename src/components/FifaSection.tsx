@@ -15,9 +15,8 @@ export function FifaSection() {
 
   useEffect(() => {
     async function loadFifaData() {
-      // CAMBIO CLAVE: Apuntamos a la nueva tabla terminada en _horizon
       const { data, error } = await supabase
-        .from('fifa_experiences_horizon')
+        .from('fifa_experiences_expgo')
         .select('*')
         .order('order_index', { ascending: true });
         
@@ -40,7 +39,6 @@ export function FifaSection() {
   return (
     <section className="relative min-h-screen flex items-center py-24 lg:py-32 bg-foreground text-white overflow-hidden">
       
-      {/* Fondo Dinámico Inmersivo - Cambia según la experiencia activa */}
       {fifaExps.map((exp) => (
         <div 
           key={exp.id}
@@ -51,7 +49,6 @@ export function FifaSection() {
             alt={exp.title} 
             className="w-full h-full object-cover scale-105"
           />
-          {/* Degradado que oscurece la mitad izquierda para que el texto sea legible */}
           <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/90 to-transparent md:to-black/30" />
         </div>
       ))}
@@ -73,11 +70,9 @@ export function FifaSection() {
           </h2>
         </div>
 
-        {/* Layout Radicalmente Distinto: Navegación Horizontal */}
         {fifaExps.length > 0 && activeExp && (
           <div className="flex flex-col gap-12">
             
-            {/* Menú de Pestañas Minimalista */}
             <div className="flex flex-wrap gap-4 md:gap-8 border-b border-white/20 pb-4">
               {fifaExps.map((exp) => (
                 <button
@@ -90,7 +85,6 @@ export function FifaSection() {
                   }`}
                 >
                   <T>{exp.title}</T>
-                  {/* Línea indicadora animada */}
                   {activeExpId === exp.id && (
                     <span className="absolute bottom-0 left-0 w-full h-[2px] bg-secondary animate-reveal" />
                   )}
@@ -98,7 +92,6 @@ export function FifaSection() {
               ))}
             </div>
 
-            {/* Contenido de la Experiencia Activa (Sin Cajas ni Tarjetas) */}
             <div className="grid md:grid-cols-2 gap-12 items-start max-w-5xl animate-reveal" key={activeExp.id}>
               
               <div className="space-y-8">
@@ -115,7 +108,6 @@ export function FifaSection() {
                 </Button>
               </div>
 
-              {/* Lista de beneficios con tipografía gigante */}
               <div className="flex flex-col gap-6">
                 {activeExp.items.map((item, i) => (
                   <div key={i} className="flex gap-6 items-start group">

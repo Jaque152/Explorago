@@ -91,7 +91,7 @@ export interface BookingItem {
   pax_qty: number; 
   unit_price: number;
   custom_destination?: string;
-  activities_horizon?: { 
+  activities_expgo?: { 
     title: string; 
     destination: string;
     plan_type: string;

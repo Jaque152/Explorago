@@ -9,21 +9,21 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: "HorizonTrip | Agencia Boutique de Viajes",
-  description: "Curamos itinerarios excepcionales. Desde santuarios escondidos en la selva hasta retiros privados frente al mar. El arte de viajar sin fricción.",
+  title: "Explorago | Turismo Gastronómico de Alto Nivel",
+  description: "Descubre el auténtico sabor de México. Recorridos culinarios, inmersión cultural y experiencias de autor.",
 };
 
-export default async function RootLayout({
-  children,
-  params
-}: Props) {
+export default async function RootLayout({ children, params }: Props) {
   const resolvedParams = await params;
   const locale = resolvedParams.locale;
 
   return (
     <html lang={locale}>
+      {/* Aplicamos la textura orgánica al body desde el inicio */}
       <ClientBody locale={locale}>
-        {children}
+        <div className="bg-texture min-h-screen">
+          {children}
+        </div>
       </ClientBody>
     </html>
   );

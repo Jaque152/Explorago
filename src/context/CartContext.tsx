@@ -20,9 +20,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<Cart>({ items: [], total: 0 });
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // Cargar del localStorage (Cambiamos el nombre de la key a HorizonTrip-cart)
+  // Cargar del localStorage (Cambiamos el nombre de la key a expgo-cart)
   useEffect(() => {
-    const savedCart = localStorage.getItem("HorizonTrip-cart");
+    const savedCart = localStorage.getItem("expgo-cart");
     if (savedCart) {
       try {
         setCart(JSON.parse(savedCart));
@@ -36,7 +36,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   // Guardar en localStorage
   useEffect(() => {
     if (isHydrated) {
-      localStorage.setItem("HorizonTrip-cart", JSON.stringify(cart));
+      localStorage.setItem("expgo-cart", JSON.stringify(cart));
     }
   }, [cart, isHydrated]);
 

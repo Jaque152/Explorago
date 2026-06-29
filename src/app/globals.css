@@ -1,5 +1,4 @@
-/* globals.css */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300..900;1,300..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Syne:wght@400..800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,54 +6,56 @@
 
 @layer base {
   :root {
-    /* HorizonTrip Palette: Selva & Playa */
-    --background: 43 33% 96%; /* Sand / Blanco Arena Cálido */
-    --foreground: 152 65% 10%; /* Deep Jungle / Verde oscuro muy elegante */
-    --card: 0 0% 100%; 
-    --card-foreground: 152 65% 10%;
-    --popover: 43 33% 96%;
-    --popover-foreground: 152 65% 10%;
+    /* =========================================
+       PALETA EXPLORAGO: MESA DE AUTOR (Corregida)
+       ========================================= */
+       
+    /* Fondo: Lino Crudo / Crema Cálido */
+    --background: 40 20% 96%; 
+    /* Texto: Piedra Volcánica */
+    --foreground: 20 10% 12%; 
     
-    /* Emerald/Turquoise - Color de acción principal */
-    --primary: 173 80% 36%; 
-    --primary-foreground: 0 0% 100%;
+    --card: 40 20% 98%; 
+    --card-foreground: 20 10% 12%;
+    --popover: 40 20% 96%;
+    --popover-foreground: 20 10% 12%;
     
-    /* Warm Sun / Dorado - Para acentos secundarios */
-    --secondary: 35 92% 55%; 
-    --secondary-foreground: 152 65% 10%;
+    /* Primario: Azul Añil / Cobalto (Más vibrante para contraste perfecto) */
+    --primary: 220 75% 45%; 
+    --primary-foreground: 40 20% 96%;
     
-    --muted: 150 10% 90%;
-    --muted-foreground: 152 20% 40%; /* Verde grisáceo para textos secundarios */
+    /* Secundario: Taupe Oscuro */
+    --secondary: 30 15% 45%; 
+    --secondary-foreground: 40 20% 96%;
     
-    --accent: 173 80% 36%;
-    --accent-foreground: 0 0% 100%;
+    --muted: 30 10% 88%;
+    --muted-foreground: 20 5% 40%; 
     
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 43 33% 96%;
+    --accent: 220 75% 45%;
+    --accent-foreground: 40 20% 96%;
     
-    --border: 150 15% 85%;
-    --input: 150 15% 85%;
-    --ring: 173 80% 36%;
+    --border: 30 10% 85%;
+    --input: 30 10% 85%;
+    --ring: 220 75% 45%;
 
-    /* Bordes más sutiles para un look orgánico */
-    --radius: 0.75rem; 
+    --radius: 0rem;
   }
 
   .dark {
-    /* Mantenemos una versión oscura pero basada en tonos bosque profundo */
-    --background: 152 65% 10%;
-    --foreground: 43 33% 96%;
-    --card: 152 60% 14%;
-    --card-foreground: 43 33% 96%;
-    --primary: 173 80% 45%;
-    --primary-foreground: 152 65% 10%;
-    --secondary: 35 92% 60%;
-    --secondary-foreground: 152 65% 10%;
-    --muted: 152 40% 20%;
-    --muted-foreground: 150 20% 70%;
-    --border: 152 40% 20%;
-    --input: 152 40% 20%;
-    --ring: 173 80% 45%;
+    /* Tema oscuro basado en Piedra Volcánica */
+    --background: 20 10% 12%;
+    --foreground: 40 20% 96%;
+    --card: 20 10% 15%;
+    --card-foreground: 40 20% 96%;
+    --primary: 220 30% 60%;
+    --primary-foreground: 20 10% 12%;
+    --secondary: 30 15% 60%;
+    --secondary-foreground: 20 10% 12%;
+    --muted: 20 10% 20%;
+    --muted-foreground: 30 10% 70%;
+    --border: 20 10% 25%;
+    --input: 20 10% 25%;
+    --ring: 220 30% 60%;
   }
 }
 
@@ -64,38 +65,41 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+  
+  /* Los títulos adoptan la tipografía arquitectónica Syne */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Archivo', sans-serif;
-    @apply tracking-tighter;
+    font-family: 'Syne', sans-serif;
+    @apply tracking-tight font-bold;
   }
 }
 
 @layer utilities {
+  /* Efecto de cristal oscuro y ahumado */
   .glass-panel {
-    @apply bg-white/70 backdrop-blur-md border border-white/40 shadow-sm;
-  }
-  .dark .glass-panel {
-    @apply bg-foreground/50 border-white/10 shadow-xl;
+    @apply bg-foreground/70 backdrop-blur-xl border border-white/10 shadow-2xl;
   }
   
-  .text-gradient-earth {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  /* Textura de ruido/papel para superponer en fondos y dar ese toque "crudo" */
+  .bg-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   }
 
-  .animate-reveal {
-    animation: reveal 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  /* Clip para la entrada dramática de textos */
+  .clip-text-reveal {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+    animation: clipReveal 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
   }
 }
 
-@keyframes reveal {
-  from { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(20px); }
-  to { opacity: 1; clip-path: inset(0 0 0 0); transform: translateY(0); }
+@keyframes clipReveal {
+  to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
 }
 
-/* Scrollbar Orgánico */
-::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--secondary)); }
+html { scroll-behavior: smooth; }

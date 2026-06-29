@@ -33,13 +33,13 @@ function CheckoutContent() {
   const locale = useLocale();
 
   useEffect(() => {
-    const savedData = sessionStorage.getItem("horizon_temp_contact");
+    const savedData = sessionStorage.getItem("explorago_temp_contact");
     if (savedData) {
       const { nombre, email, folio } = JSON.parse(savedData);
       setContactInfo(prev => ({ ...prev, firstName: nombre, email: email }));
       setOrderNotes(`Pago referente al Folio: ${folio}`);
       setAddNotes(true);
-      sessionStorage.removeItem("horizon_temp_contact"); 
+      sessionStorage.removeItem("explorago_temp_contact"); 
     }
   }, []);
 
@@ -194,7 +194,7 @@ function CheckoutContent() {
                   </h2>
                   {/* Logo de Etomin SVG */}
                   <div className="h-8">
-                     <img src="/etomin_logo.svg" alt="Powered by Etomin" className="h-full object-contain brightness-0 invert" />
+                     <img src="/logo-octano-2.png" alt="Powered by Etomin" className="h-full object-contain brightness-0 invert" />
                   </div>
                 </div>
                   

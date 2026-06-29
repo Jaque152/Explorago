@@ -98,7 +98,7 @@ export default function PagoFolioPage() {
               <span className="font-light italic text-primary"><T>Folio.</T></span>
             </h1>
             <p className="text-lg text-muted-foreground font-medium max-w-xl leading-relaxed">
-              <T>Procesamiento seguro para itinerarios a la medida y servicios exclusivos de HorizonTrip. Ingresa los detalles de tu folio asignado para proceder al checkout.</T>
+              <T>Procesamiento seguro para itinerarios a la medida y servicios exclusivos de ExploraGo. Ingresa los detalles de tu folio asignado para proceder al checkout.</T>
             </p>
           </div>
         </section>
