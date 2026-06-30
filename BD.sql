@@ -261,3 +261,28 @@ INSERT INTO public.activities_expgo (slug, title, plan_type, destination, price,
 '["Recomendación de hotel de viñedo", "Desayuno y 2 comidas", "Visita técnica a 3 vinícolas boutique", "Cata de 12 vinos", "Sommelier privado", "Transporte desde Tijuana o Ensenada"]'::jsonb, 
 '{"no_incluye": ["Vuelo", "Botellas adicionales", "Compras personales", "Hospedaje"]}'::jsonb, 4,
 '["https://images.pexels.com/photos/33526542/pexels-photo-33526542.jpeg"]'::jsonb);
+
+-- =====================================================================================
+-- 6. INSERTAR DETALLES MUNDIAL (FIFA)
+-- =====================================================================================
+INSERT INTO public.fifa_experiences_expgo (title, subtitle, description, items, image_url, order_index) VALUES
+
+('Estadios y Museos', 'Recorridos Históricos', 'Visitas guiadas a los templos del fútbol y acceso a zonas restringidas.', 
+'["Visitas guiadas a estadios FIFA y campos históricos", "Acceso a vestidores y zonas VIP (fotos y experiencias interactivas)", "Recorridos por museos de fútbol y exhibiciones temáticas"]'::jsonb, 
+'https://images.pexels.com/photos/37463566/pexels-photo-37463566.jpeg', 1),
+
+('Fan Experiences', 'Interacción Total', 'Zonas de realidad virtual y encuentros con leyendas del deporte.', 
+'["Clínicas de fútbol y retos de habilidades", "Realidad virtual de partidos históricos", "Meet & greet con leyendas"]'::jsonb, 
+'https://images.pexels.com/photos/38109922/pexels-photo-38109922.jpeg', 2),
+
+('Viewing Parties', 'Eventos en Vivo', 'Proyección de partidos en pantallas gigantes con ambiente temático.', 
+'["Pantallas gigantes", "Trivia y juegos recreativos", "Catering temático y snacks"]'::jsonb, 
+'https://images.pexels.com/photos/23495482/pexels-photo-23495482.jpeg', 3),
+
+('Cultura y Ciudad', 'Recorridos Urbanos', 'Explora el lado futbolero de las sedes mundialistas.', 
+'["Street football tours", "Bares deportivos icónicos", "Arte urbano y murales de fútbol"]'::jsonb, 
+'https://images.pexels.com/photos/13517352/pexels-photo-13517352.jpeg', 4),
+
+('Experiencias educativas', 'Historia del fútbol y estrategias de juego', 'Descubre más acerca del fútbol y domina la cancha.', 
+'["Talleres tácticos", "Trivia con premios", "Historia de los mundiales"]'::jsonb, 
+'https://images.pexels.com/photos/38233935/pexels-photo-38233935.jpeg', 5);

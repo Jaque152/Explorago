@@ -69,7 +69,7 @@ function CheckoutContent() {
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ locale, contactInfo, billingInfo, orderNotes: addNotes ? orderNotes : null, cart, cardInfo, formattedTotal: formatPrice(finalTotal), manualFolioData:null })
+        body: JSON.stringify({ locale:locale, contactInfo, billingInfo, orderNotes: addNotes ? orderNotes : null, cart, cardInfo, formattedTotal: formatPrice(finalTotal), manualFolioData:null })
       });
       const data = await response.json();
       if (!response.ok || !data.success) throw new Error(data.message || "Error procesando el pago");
