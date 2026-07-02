@@ -78,7 +78,8 @@ const BookingWidget = ({
               value={selectedDate} 
               onChange={(e) => setSelectedDate(e.target.value)} 
               min={minDateStr} 
-              className="w-full bg-transparent font-sans text-white border-none focus:outline-none color-scheme-dark text-sm" 
+              style={{ colorScheme: 'dark' }} // Fuerzo el modo oscuro en el input nativo
+              className="w-full bg-transparent font-sans text-white border-none focus:outline-none text-sm [&::-webkit-calendar-picker-indicator]:invert [&::-webkit-calendar-picker-indicator]:opacity-60 hover:[&::-webkit-calendar-picker-indicator]:opacity-100 transition-opacity cursor-pointer" 
             />
           </div>
 
@@ -132,6 +133,7 @@ export default function ExperienceDetailPage() {
       if (!params.id) return;
       setLoading(true);
       try {
+        // ACTUALIZADO: Consultamos a las tablas correctas (sufijo _expgo)
         const { data: activity } = await supabase
           .from('activities_expgo')
           .select('*, categories:categories_expgo(name, slug)')
@@ -193,7 +195,7 @@ export default function ExperienceDetailPage() {
         <div className="container mx-auto px-6 lg:px-12 max-w-screen-xl">
           
           {/* =========================================================
-              ENCABEZADO EDITORIAL (Sin imágenes de fondo)
+              ENCABEZADO EDITORIAL
               ========================================================= */}
           <header className="mb-12 max-w-4xl">
             <span className="inline-block text-[10px] font-bold text-primary uppercase tracking-[0.4em] mb-6 border-b border-primary pb-2">
@@ -218,7 +220,7 @@ export default function ExperienceDetailPage() {
           </header>
 
           {/* =========================================================
-              FOTOGRAFÍA PANORÁMICA CORTADA (Cine)
+              FOTOGRAFÍA PANORÁMICA
               ========================================================= */}
           <figure className="w-full aspect-video md:aspect-[21/9] overflow-hidden bg-foreground/5 mb-16 lg:mb-24 shadow-sm border border-foreground/10">
             <img 
@@ -229,14 +231,12 @@ export default function ExperienceDetailPage() {
           </figure>
 
           {/* =========================================================
-              CUERPO DE LECTURA Y WIDGET (Grid Asimétrico)
+              CUERPO DE LECTURA Y WIDGET
               ========================================================= */}
           <div className="flex flex-col lg:grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
             
-            {/* LADO IZQUIERDO: Narrativa y Tiempos */}
             <div className="lg:col-span-7 space-y-20 w-full">
               
-              {/* Descripción (Con Letra Capitular) */}
               <section>
                 <h2 className="text-sm font-bold text-foreground/40 uppercase tracking-[0.3em] mb-6"><T>La Experiencia</T></h2>
                 <p className="text-foreground/80 font-sans leading-relaxed text-lg whitespace-pre-wrap">
@@ -247,7 +247,6 @@ export default function ExperienceDetailPage() {
                 </p>
               </section>
 
-              {/* El Recorrido (Menú de Tiempos) */}
               {experience.suggested_route && experience.suggested_route.length > 0 && (
                 <section>
                   <h2 className="text-sm font-bold text-foreground/40 uppercase tracking-[0.3em] mb-10"><T>Itinerario Sugerido</T></h2>
@@ -264,9 +263,7 @@ export default function ExperienceDetailPage() {
                 </section>
               )}
 
-              {/* Inclusiones e Información Técnica */}
               <section className="grid sm:grid-cols-2 gap-12 bg-white/40 p-8 border border-foreground/10">
-                {/* Incluye */}
                 {experience.included && experience.included.length > 0 && (
                   <div>
                     <h3 className="text-[10px] font-bold uppercase text-primary tracking-[0.2em] mb-6"><T>Incluye</T></h3>
@@ -280,10 +277,9 @@ export default function ExperienceDetailPage() {
                     </ul>
                   </div>
                 )}
-                {/* No incluye */}
                 {experience.logistics?.no_incluye && experience.logistics.no_incluye.length > 0 && (
                   <div>
-                    <h3 className="text-[10px] font-bold uppercase text-foreground/40 tracking-[0.2em] mb-6"><T>A Considerar</T></h3>
+                    <h3 className="text-[10px] font-bold uppercase text-foreground/40 tracking-[0.2em] mb-6"><T>No incluye</T></h3>
                     <ul className="space-y-4">
                       {experience.logistics.no_incluye.map((noInc, i) => (
                         <li key={i} className="flex items-start gap-3 opacity-70">
@@ -298,7 +294,6 @@ export default function ExperienceDetailPage() {
 
             </div>
 
-            {/* LADO DERECHO: Terminal de Reserva */}
             <aside className="lg:col-span-5 w-full">
               <BookingWidget 
                 experience={experience} selectedDate={selectedDate} setSelectedDate={setSelectedDate} people={people} setPeople={setPeople}

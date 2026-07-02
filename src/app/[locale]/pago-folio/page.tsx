@@ -125,7 +125,7 @@ export default function PagoFolioPage() {
                   <FileText className="w-64 h-64 text-white" />
                 </div>
                 <div className="relative z-10">
-                  <label className="text-xs font-bold uppercase tracking-widest text-white/50 mb-4 block"><T>Valor de Inversión (MXN + IVA)</T></label>
+                  <label className="text-xs font-bold uppercase tracking-widest text-white/50 mb-4 block"><T>Valor de Inversión (IVA Incluido)</T></label>
                   <div className="flex items-end gap-4 border-b border-white/20 pb-4 focus-within:border-primary transition-colors">
                     <span className="text-5xl md:text-6xl font-light text-white/30">$</span>
                     <Input 

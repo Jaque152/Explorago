@@ -199,7 +199,7 @@ function ExperienciasContent() {
 
                         <div className="w-full md:w-1/3 flex flex-row md:flex-col justify-between md:justify-start items-center md:items-end md:text-right border-t md:border-t-0 md:border-l border-foreground/10 pt-6 md:pt-0 pl-0 md:pl-8">
                           <div className="mb-0 md:mb-8">
-                            <span className="block text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em] mb-2"><T>Inversión</T></span>
+                            <span className="block text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em] mb-2"><T>IVA Incluido</T></span>
                             <span className="text-xl font-sans font-bold text-foreground">{formatPrice(exp.price)}</span>
                           </div>
                           
