@@ -68,9 +68,9 @@ export function Footer() {
           
           <div className="flex flex-col gap-4 text-left md:text-right">
             <div className="flex flex-wrap gap-4 uppercase tracking-[0.2em] font-bold md:justify-end">
-              <Link href={`/${locale}/aviso-de-privacidad`} className="hover:text-primary transition-colors"><T>Privacidad</T></Link>
-              <Link href={`/${locale}/terminos-y-condiciones`} className="hover:text-primary transition-colors"><T>Términos</T></Link>
-              <Link href={`/${locale}/politica-de-cancelacion} className="hover:text-primary transition-colors"><T>Reembolsos</T></Link>
+              <Link href={`/${locale}/aviso-de-privacidad`} className="hover:text-primary transition-colors"><T>Política de Privacidad</T></Link>
+              <Link href={`/${locale}/terminos-y-condiciones`} className="hover:text-primary transition-colors"><T>Términos y Comdiciones</T></Link>
+              <Link href={`/${locale}/politica-de-cancelacion`} className="hover:text-primary transition-colors"><T>Política de devoluciones y reembolsos </T></Link>
             </div>
             <p>© {new Date().getFullYear()} Explorago. <T>Todos los derechos reservados.</T></p>
           </div>
