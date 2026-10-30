@@ -37,7 +37,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* CORRECCIÓN: Tamaños estándar de Tailwind, sin vw. */}
         <div className="mb-20 flex flex-col justify-center items-center w-full">
           <h2 className="text-6xl md:text-8xl lg:text-9xl leading-none font-display font-bold text-white uppercase tracking-tight text-center break-words">
             EXPLORA<span className="text-primary">GO.</span>
@@ -47,9 +46,12 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-10 text-xs font-sans text-white/40 pt-10 border-t border-white/10">
           <div className="space-y-3">
             <p className="font-bold tracking-[0.3em] uppercase text-white/60"><T>Sede Central</T></p>
-            <p className="leading-relaxed">Ciudad de México, MX<br/>Redefiniendo el turismo gastronómico.</p>
+            <p className="leading-relaxed">
+              <T>Av. Revolución 1564, San Ángel, Álvaro Obregón, 01020 Ciudad de México, CDMX</T><br/>
+              <T>+52 1 55 5662 5469</T>
+            </p>
           </div>
-          {/* Bottom Bar: Logos de Pago y Copyright */}
+          
           <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-background/10">
             <div className="flex gap-2">
               <div className="px-3 py-1.5 bg-white rounded flex items-center justify-center">
@@ -60,13 +62,15 @@ export function Footer() {
               </div>
             </div>
             <div className="text-[10px] font-light tracking-widest text-background/50 uppercase">
-              <span>© {new Date().getFullYear()} Mextripia. <T>Todos los derechos reservados.</T></span>
+              <span>© {new Date().getFullYear()} Explorago. <T>Todos los derechos reservados.</T></span>
             </div>
           </div>
+          
           <div className="flex flex-col gap-4 text-left md:text-right">
-            <div className="flex gap-6 uppercase tracking-[0.2em] font-bold md:justify-end">
+            <div className="flex flex-wrap gap-4 uppercase tracking-[0.2em] font-bold md:justify-end">
               <Link href={`/${locale}/aviso-de-privacidad`} className="hover:text-primary transition-colors"><T>Privacidad</T></Link>
-              <Link href={`/${locale}/terminos`} className="hover:text-primary transition-colors"><T>Términos</T></Link>
+              <Link href={`/${locale}/terminos-y-condiciones`} className="hover:text-primary transition-colors"><T>Términos</T></Link>
+              <Link href={`/${locale}/politica-de-cancelacion} className="hover:text-primary transition-colors"><T>Reembolsos</T></Link>
             </div>
             <p>© {new Date().getFullYear()} Explorago. <T>Todos los derechos reservados.</T></p>
           </div>
